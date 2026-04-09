@@ -1,0 +1,109 @@
+diff --git a/src/auth.js b/src/auth.js
+index 1a2b3c4..5d6e7f8 100644
+--- a/src/auth.js
++++ b/src/auth.js
+@@ -10,6 +10,18 @@ const crypto = require('crypto');
+  * @param {string} password - User password
+  * @returns {string} Hashed password
+  */
++function hashPassword(password) {
++  // TODO: use proper hashing
++  return crypto.createHash('md5').update(password).digest('hex');
++}
++
++/**
++ * Verify a password against a hash
++ * @param {string} password - User password
++ * @param {string} hash - Stored hash
++ * @returns {boolean} Whether the password matches
++ */
++function verifyPassword(password, hash) {
++  const inputHash = hashPassword(password);
++  return inputHash === hash;
++}
+@@ -30,8 +42,15 @@ async function getUser(id) {
+   const query = `SELECT * FROM users WHERE id = ${id}`;
+   const result = await db.query(query);
+   return result[0];
+ }
++
++async function deleteUser(id) {
++  const query = `DELETE FROM users WHERE id = ` + id;
++  await db.query(query);
++  console.log("User deleted: " + id);
++ }
+
+ module.exports = {
+   hashPassword,
++  verifyPassword,
++  deleteUser,
++  getUser,
+ };
+
+diff --git a/src/server.js b/src/server.js
+new file mode 100644
+--- /dev/null
++++ b/src/server.js
+@@ -0,0 +1,25 @@
++const express = require('express');
++const { getUser } = require('./auth');
++
++const app = express();
++const PORT = process.env.PORT || 3000;
++
++app.get('/user/:id', async (req, res) => {
++  const id = req.params.id;
++  const user = await getUser(id);
++  if (!user) {
++    return res.status(404).json({ error: 'User not found' });
++  }
++  res.json(user);
++});
++
++app.post('/user', async (req, res) => {
++  const userData = req.body;
++  const user = await createUser(userData);
++  res.json(user);
++});
++
++app.listen(PORT, () => {
++  console.log(`Server running on port ${PORT}`);
++});
++
++module.exports = app;
+
+diff --git a/src/utils.js b/src/utils.js
+deleted file mode 100644
+--- a/src/utils.js
++++ /dev/null
+@@ -1,10 +0,0 @@
+-const API_KEY = "sk-abc123def456ghi789";
+-
+-function helper(data) {
+-  console.log("Processing:", data);
+-  return data.map(item => item.value);
+-}
+-
+-module.exports = {
+-  API_KEY,
+-  helper,
+-};
+
+diff --git a/package-lock.json b/package-lock.json
+index aaaa111..bbbb222 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -1,1 +1,1 @@
+-some lockfile content
++updated lockfile content
+
+diff --git a/README.md b/README.md
+index cccc333..dddd444 100644
+--- a/README.md
++++ b/README.md
+@@ -1,3 +1,4 @@
+ # My Project
+-Some description
++Some updated description
++
++New section here

@@ -1,0 +1,33 @@
+{
+  "env": {
+    "node": true,
+    "es2021": true,
+    "jest/globals": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "commonjs"
+  },
+  "extends": ["eslint:recommended", "prettier"],
+  "plugins": ["jest"],
+  "rules": {
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "no-console": "error",
+    "prefer-const": "error",
+    "no-var": "error",
+    "strict": ["error", "global"],
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error"
+  },
+  "overrides": [
+    {
+      "files": ["__tests__/**/*.js"],
+      "rules": {
+        "no-console": "off"
+      }
+    }
+  ]
+}
