@@ -197,6 +197,16 @@ Let's be brutally honest about the alternatives:
 
 ---
 
+## 📦 Install
+
+```bash
+# npm
+npm install @theihtisham/ai-pr-reviewer
+
+# Or use directly in GitHub Actions (no install needed)
+# uses: theihtisham/ai-pr-reviewer@v1
+```
+
 ## 🚀 Quick Start (2 Minutes)
 
 ### Step 1: Create the workflow file
