@@ -1,0 +1,69 @@
+name: "AI PR Reviewer"
+description: "AI-powered code review that catches bugs, security issues, and performance problems before they reach production"
+branding:
+  icon: "eye"
+  color: "purple"
+inputs:
+  github-token:
+    description: "GitHub token for API access"
+    required: true
+  api-key:
+    description: "OpenAI-compatible API key"
+    required: true
+  api-base:
+    description: "API endpoint (supports any OpenAI-compatible API)"
+    required: false
+    default: "https://api.openai.com/v1"
+  model:
+    description: "AI model to use"
+    required: false
+    default: "gpt-4o"
+  max-comments:
+    description: "Maximum inline comments per review (1-100)"
+    required: false
+    default: "20"
+  severity-threshold:
+    description: "Minimum severity to report (info/warning/error/critical)"
+    required: false
+    default: "info"
+  language:
+    description: "Response language"
+    required: false
+    default: "en"
+  review-types:
+    description: "Comma-separated review categories (bug,security,performance,quality)"
+    required: false
+    default: "bug,security,performance,quality"
+  ignore-paths:
+    description: "Comma-separated glob patterns to skip"
+    required: false
+    default: ""
+  auto-approve:
+    description: "Auto-approve if no issues found"
+    required: false
+    default: "false"
+  summary-only:
+    description: "Post only summary, no inline comments"
+    required: false
+    default: "false"
+  fail-on-critical:
+    description: "Fail the action if critical issues found"
+    required: false
+    default: "false"
+  temperature:
+    description: "AI temperature (lower = more consistent, 0.0-2.0)"
+    required: false
+    default: "0.2"
+outputs:
+  issues-found:
+    description: "Number of issues found"
+    value: ${{ steps.review.outputs.issues-found }}
+  summary:
+    description: "Review summary text"
+    value: ${{ steps.review.outputs.summary }}
+  approved:
+    description: "Whether PR passed review"
+    value: ${{ steps.review.outputs.approved }}
+runs:
+  using: "node20"
+  main: "dist/index.js"
