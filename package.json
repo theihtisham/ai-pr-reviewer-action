@@ -1,5 +1,5 @@
 {
-  "name": "ai-pr-reviewer",
+  "name": "@theihtisham/ai-pr-reviewer",
   "version": "1.0.0",
   "description": "AI-powered GitHub Action for automated PR reviews",
   "main": "index.js",
@@ -34,5 +34,12 @@
     "openai",
     "pr-review"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theihtisham/ai-pr-reviewer.git"
+  }
 }
