@@ -31,7 +31,8 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-Strict-3178C6?logo=typescript&logoColor=white&style=for-the-badge)](https://www.typescriptlang.org/)
 [![Tests](https://img.shields.io/badge/Tests-112%20Passing-brightgreen?style=for-the-badge)](#)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge)](https://github.com/USERNAME/ai-pr-reviewer/pulls)
+[![npm version](https://img.shields.io/npm/v/@theihtisham/ai-pr-reviewer?style=for-the-badge&logo=npm&color=CB3847)](https://www.npmjs.com/package/@theihtisham/ai-pr-reviewer)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen?style=for-the-badge)](https://github.com/theihtisham/ai-pr-reviewer/pulls)
 
 </p>
 
@@ -219,7 +220,7 @@ jobs:                                          #
     runs-on: ubuntu-latest                     # Runs on GitHub's servers
     steps:                                     #
       - name: AI Code Review                   # Step name (visible in logs)
-        uses: USERNAME/ai-pr-reviewer@v1       # ← Change to YOUR repo
+        uses: theihtisham/ai-pr-reviewer@v1       # ← Change to YOUR repo
         with:                                  #
           github-token: ${{ secrets.GITHUB_TOKEN }}  # Auto-provided by GitHub
           api-key: ${{ secrets.OPENAI_API_KEY }}      # Your OpenAI key
@@ -300,7 +301,7 @@ jobs:
   review:
     runs-on: ubuntu-latest
     steps:
-      - uses: USERNAME/ai-pr-reviewer@v1
+      - uses: theihtisham/ai-pr-reviewer@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           api-key: ${{ secrets.OPENAI_API_KEY }}
@@ -324,7 +325,7 @@ jobs:
   review:
     runs-on: ubuntu-latest
     steps:
-      - uses: USERNAME/ai-pr-reviewer@v1
+      - uses: theihtisham/ai-pr-reviewer@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           api-key: ${{ secrets.AZURE_OPENAI_KEY }}
@@ -350,7 +351,7 @@ jobs:
   review:
     runs-on: self-hosted              # ← Must have Ollama installed
     steps:
-      - uses: USERNAME/ai-pr-reviewer@v1
+      - uses: theihtisham/ai-pr-reviewer@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           api-key: ollama             # ← Any non-empty value works
@@ -387,7 +388,7 @@ jobs:
   security-review:
     runs-on: ubuntu-latest
     steps:
-      - uses: USERNAME/ai-pr-reviewer@v1
+      - uses: theihtisham/ai-pr-reviewer@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           api-key: ${{ secrets.OPENAI_API_KEY }}
@@ -416,7 +417,7 @@ jobs:
   review:
     runs-on: ubuntu-latest
     steps:
-      - uses: USERNAME/ai-pr-reviewer@v1
+      - uses: theihtisham/ai-pr-reviewer@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           api-key: ${{ secrets.OPENAI_API_KEY }}
@@ -648,7 +649,7 @@ We love contributions! Whether it's a bug fix, new feature, or documentation imp
 
 ```bash
 # 1. Fork and clone the repository
-git clone https://github.com/USERNAME/ai-pr-reviewer.git
+git clone https://github.com/theihtisham/ai-pr-reviewer.git
 cd ai-pr-reviewer
 
 # 2. Install dependencies
