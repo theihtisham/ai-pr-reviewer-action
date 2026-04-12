@@ -25,7 +25,11 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jest": "^28.6.0",
     "prettier": "^3.3.0",
-    "husky": "^9.1.0"
+    "husky": "^9.1.0",
+    "typescript": "^5.3.0",
+    "@types/node": "^20.0.0",
+    "ts-jest": "^29.1.0",
+    "@types/jest": "^29.5.0"
   },
   "keywords": [
     "github-action",
@@ -41,5 +45,10 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/theihtisham/ai-pr-reviewer.git"
-  }
+  },
+  "author": "ihtisham",
+  "bugs": {
+    "url": "https://github.com/theihtisham/ai-pr-reviewer/issues"
+  },
+  "homepage": "https://github.com/theihtisham/ai-pr-reviewer#readme"
 }
